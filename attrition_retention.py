@@ -161,14 +161,20 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
                                      mode="lines+markers", name="Retention Rate (%)",
                                      line={"color": "orange", "width": 3}, yaxis="y2"))
             fig.update_layout(
-                yaxis=dict(title="Retained Employees (count)", side="left",
-                           tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                yaxis2=dict(title="Retention Rate (%)", overlaying="y", side="right", range=[80, 100],
-                            tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                xaxis=dict(title="Year", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                font={"color": "var(--text-color)"},
-                legend={font={"color": "var(--text-color}"}),
-                barmode="group", height=220, margin={"l": 60, "r": 60, "t": 20, "b": 20}
+                yaxis={
+                    "title": "Retained Employees (count)",
+                    "side": "left"
+                },
+                yaxis2={
+                    "title": "Retention Rate (%)",
+                    "overlaying": "y",
+                    "side": "right",
+                    "range": [80, 100]
+                },
+                xaxis={"title": "Year"},
+                barmode="group",
+                height=220,
+                margin={"l": 60, "r": 60, "t": 20, "b": 20}
             )
             st.plotly_chart(fig, use_container_width=True, key="retention_by_gender")
 
@@ -205,12 +211,12 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
                                    color_discrete_map=generation_colors,
                                    category_orders={"Generation": generation_order})
             fig_retention.update_layout(
-                height=220, margin={"l": 20, "r": 20, "t": 20, "b": 20},
-                yaxis=dict(title="Retention Rate (%)", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                xaxis=dict(title="Year", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                font={"color": "var(--text-color)"},
-                legend={font={"color": "var(--text-color}"}),
-                uniformtext_minsize=10, uniformtext_mode="hide"
+                height=220,
+                margin={"l": 20, "r": 20, "t": 20, "b": 20},
+                yaxis={"title": "Retention Rate (%)"},
+                xaxis={"title": "Year"},
+                uniformtext_minsize=10,
+                uniformtext_mode="hide"
             )
             st.plotly_chart(fig_retention, use_container_width=True, key="retention_by_generation")
 
@@ -240,12 +246,12 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
                 color_discrete_sequence=["#00008B"]
             )
             fig_monthly.update_layout(
-                height=300, margin={"l": 20, "r": 20, "t": 20, "b": 20},
-                yaxis=dict(title="Attrition Count", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                xaxis=dict(title="Month", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                font={"color": "var(--text-color)"},
-                legend={font={"color": "var(--text-color}"}),
-                uniformtext_minsize=10, uniformtext_mode="hide",
+                height=300,
+                margin={"l": 20, "r": 20, "t": 20, "b": 20},
+                yaxis={"title": "Attrition Count"},
+                xaxis={"title": "Month"},
+                uniformtext_minsize=10,
+                uniformtext_mode="hide",
                 showlegend=False
             )
             st.plotly_chart(fig_monthly, use_container_width=True, key="attrition_by_month")
@@ -266,12 +272,12 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
                     color_discrete_map={"Voluntary": "#6495ED", "Involuntary": "#00008B"}
                 )
                 fig_attrition.update_layout(
-                    height=300, margin={"l": 20, "r": 20, "t": 20, "b": 20},
-                    yaxis=dict(title="Attrition Count", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                    xaxis=dict(title="Year", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-                    font={"color": "var(--text-color)"},
-                    legend={font={"color": "var(--text-color}"}),
-                    uniformtext_minsize=10, uniformtext_mode="hide"
+                    height=300,
+                    margin={"l": 20, "r": 20, "t": 20, "b": 20},
+                    yaxis={"title": "Attrition Count"},
+                    xaxis={"title": "Year"},
+                    uniformtext_minsize=10,
+                    uniformtext_mode="hide"
                 )
                 st.plotly_chart(fig_attrition, use_container_width=True, key="attrition_by_type")
             else:
@@ -298,11 +304,11 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
             hover_data={"Joins": True, "Resignations": True, "NetChange": True, "Status": True, "Year": True}
         )
         fig_net.update_layout(
-            height=320, margin={"l": 20, "r": 20, "t": 20, "b": 20},
-            yaxis=dict(title="Net Change", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-            xaxis=dict(title="Year", tickfont={"color": "var(--text-color)"}, titlefont={"color": "var(--text-color)"}),
-            font={"color": "var(--text-color)"},
-            legend={font={"color": "var(--text-color}"}),
-            uniformtext_minsize=10, uniformtext_mode="hide"
+            height=320,
+            margin={"l": 20, "r": 20, "t": 20, "b": 20},
+            yaxis={"title": "Net Change"},
+            xaxis={"title": "Year"},
+            uniformtext_minsize=10,
+            uniformtext_mode="hide"
         )
         st.plotly_chart(fig_net, use_container_width=True, key="net_talent_change")

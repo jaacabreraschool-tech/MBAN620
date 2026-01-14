@@ -189,7 +189,6 @@ def render(df, df_raw, selected_year):
             margin={"l": 20, "r": 100, "t": 20, "b": 80},
             legend_title="Rating Type",
             font={"color": "var(--text-color)"},
-            legend={font={"color": "var(--text-color}"}, traceorder="normal")
         )
 
         st.plotly_chart(fig_stacked, use_container_width=True)
