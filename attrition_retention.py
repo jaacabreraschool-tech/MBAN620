@@ -125,13 +125,13 @@ def render(df, df_raw, selected_year, df_attrition=None, summary_file="HR Cleane
         resigned_per_year = df_raw.groupby("Year")["ResignedFlag"].sum().reset_index(name="Resigned")
         fig_resigned = px.bar(resigned_per_year, x="Year", y="Resigned", text="Resigned",
                               color_discrete_sequence=["#00008B"])
+        fig_resigned.update_traces(textposition='outside')
         fig_resigned.update_layout(
-            height=220, margin=dict(l=20, r=20, t=20, b=20),
-            yaxis=dict(title="Resigned Employees", tickfont=dict(color="var(--text-color)"), titlefont=dict(color="var(--text-color)")),
-            xaxis=dict(title="Year", tickfont=dict(color="var(--text-color)"), titlefont=dict(color="var(--text-color)")),
-            font=dict(color="var(--text-color)"),
-            legend=dict(font=dict(color="var(--text-color)")),
-            uniformtext_minsize=10, uniformtext_mode="hide",
+            height=220,
+            margin={"l": 20, "r": 20, "t": 20, "b": 20},
+            xaxis_title="",
+            yaxis_title="",
+            yaxis_showticklabels=False,
             showlegend=False
         )
         st.plotly_chart(fig_resigned, use_container_width=True, key="resigned_per_year")
